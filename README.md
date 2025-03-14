@@ -4,48 +4,66 @@ Tshell is a terminal-themed portfolio web application that mimics a command-line
 
 ## Features
 
-- **Terminal Interface**: Users can navigate through the portfolio using commands.  
-- **Customizable Commands**: Define custom commands like `about`, `projects`, and `contact`.  
-- **Responsive Design**: Works across different screen sizes.  
+- **Terminal Interface**: Navigate through the portfolio using terminal-like commands.  
+- **Customizable Commands**: Easily define custom commands such as `about`, `projects`, and `contact`.  
+- **Responsive Design**: Fully responsive and works seamlessly across different screen sizes.  
 
 ## Installation
 
-### Clone the repository
+Follow these steps to set up and run the application locally:
+
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/ltlx4/Tshell.git
 ```
 
-### Navigate to the project directory
+### 2. Navigate to the Project Directory
 
 ```bash
 cd Tshell
 ```
 
-### Install dependencies
+### 3. Install Dependencies
+
+Make sure you have Python installed. Then, install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Run the application
+### 4. Run the Application
+
+Start the development server:
 
 ```bash
 python manage.py runserver
 ```
 
-Open [`http://127.0.0.1:8000/`](http://127.0.0.1:8000/) in your browser.
+Open the application in your browser at [`http://127.0.0.1:8000/`](http://127.0.0.1:8000/).
 
 ## Customization
 
-- **Edit content**: Modify the content in the `portfolio` directory.  
-- **Update styles**: Customize styles in the `staticfiles` directory.  
-- **Modify commands**: Adjust command functionality in the application views.  
+You can customize the application to suit your needs:
+
+- **Edit Content**: Modify the content in the `portfolio` directory to update your personal information.  
+- **Update Styles**: Customize the look and feel by editing files in the `staticfiles` directory.  
+- **Modify Commands**: Adjust or add new commands by editing the application views.  
 
 ## Contributing
 
-Pull requests and issue reports are welcome. If you'd like to contribute, please fork the repository and submit a pull request with your changes.
+Contributions are welcome! If you'd like to contribute:
+
+1. Fork the repository.  
+2. Create a new branch for your feature or bug fix.  
+3. Submit a pull request with a detailed explanation of your changes.  
+
+Feel free to report issues or suggest new features by opening an issue in the repository.
 
 ## License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
+
+---
+
+Happy coding! 🚀
