@@ -171,6 +171,21 @@ canvas {
   30%, 80% { transform: scale(0.92, 0.95); }
 }
 
+/* Media query for smaller screens (up to 768px) */
+@media (max-width: 768px) {
+  .ascii-art {
+    font-size: 10px; /* Make it smaller on mobile */
+  }
+}
+
+/* Media query for very small screens (up to 480px) */
+@media (max-width: 480px) {
+  .ascii-art {
+    font-size: 8px; /* Further decrease the font size on very small screens */
+  }
+}
+
+
 #command-output p {
   margin: .4em;
 }
@@ -308,7 +323,24 @@ canvas {
 
 .commands-grid {
   display: grid;
+  background-color: #1b1b1b;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Media query for mobile screens (adjust as needed for your breakpoint) */
+@media (max-width: 768px) {
+  .commands-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+
+/* Media query for smaller screens (up to 480px) */
+@media (max-width: 480px) {
+  .commands-grid {
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto; 
+  }
 }
 
 .command-item {
