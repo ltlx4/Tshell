@@ -28,7 +28,6 @@ def execute_command(request):
         response = """
             <div class="help-container">
                 <h2>Available Commands</h2>
-                <p>Type <code>[command] --help</code> for more information on a specific command.</p>
                 <div class="commands-grid">
                     <div class="command-item">
                         <span class="command">about</span>
