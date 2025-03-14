@@ -7,15 +7,34 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh
 }
+
+#terminal {
+  transition: all .4s ease-in-out;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Place canvas behind other content */
+}
+
+.reload-effect {
+  transform: scale(0);
+  background-color: black;
+  opacity: 0;
+}
+
 .terminal {
   /* background-color: #1e1e1e; */
   background-color: black;
   border-radius: 5px;
   font-size: 1em;
-  width: 50%;
-  height:80%;
+  width: 75%;
+  height:90%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .header {
@@ -62,15 +81,15 @@ body {
   border: none;
   color: #00ff00;
   font-family: 'Courier New', monospace;
-  font-size: 20px;
   margin-left: 5px;
   flex-grow: 1;
   outline: none;
 }
 .command {
-  color: #00a8ff;
+  padding: 3px;
+  color: #00ff00;
   font-weight: bolder;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 @keyframes typing {
@@ -90,23 +109,52 @@ body {
   }
 }
 
-.typed-out{
+
+#terminal-body {
+  padding: .5em .5em;
+  max-width: inherit;
+  height: inherit;
+  border: #4b4949 solid 1px;
+  overflow-y: scroll;
+}
+
+
+/* Class for dynamically added content (no animation) */
+.dynamic-content {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   font-size: 20px;
-  width: 0;
-  animation: typing 2s forwards;
+  width: 100%; /* Start with full width */
 }
 
+
+/* Custom scrollbar for the terminal body */
 #terminal-body {
-  padding: .5em .5em;
-  max-width: 98%;
-  height: 100%;
-  max-height: 100%;
-  border: #4b4949 solid 1px;
-  overflow-y: scroll;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #00ff00 #1e1e1e; /* For Firefox */
 }
+
+/* Custom scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+#terminal-body::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+
+#terminal-body::-webkit-scrollbar-track {
+  background: #1e1e1e; /* Dark background for the track */
+  border-radius: 5px; /* Rounded corners */
+}
+
+#terminal-body::-webkit-scrollbar-thumb {
+  background: #00ff00; /* Green color for the thumb */
+  border-radius: 5px; /* Rounded corners */
+  border: 2px solid #1e1e1e; /* Add a border to match the theme */
+}
+
+#terminal-body::-webkit-scrollbar-thumb:hover {
+  background: #00cc00; /* Darker green on hover */
+}
+
 /* ASCII Art Styling */
 .ascii-art {
   color: #00ff00; /* Green color for retro terminal look */
@@ -115,16 +163,26 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  animation: fadeIn 2s ease-in-out;
+  animation: fadeIn 3s ease-in-out, 10s ease 3s infinite beat;
 }
+
+@keyframes beat {
+  0%, 50%, 100% { transform: scale(1, 1); }
+  30%, 80% { transform: scale(0.92, 0.95); }
+}
+
+#command-output p {
+  margin: .4em;
+}
+
 
 /* Introduction Text Styling */
 .intro-text {
   color: #00ff00; /* Green color */
   font-family: 'Courier New', monospace;
   font-size: 16px;
-  margin: 10px 0;
-  animation: slideIn 1s ease-in-out;
+  margin: .1em 0;
+  line-height: 1.2em;
 }
 
 /* Highlighted Text */
@@ -173,20 +231,13 @@ body {
   }
 }
 
-/* Skill Sections */
-.skill-section {
-  margin: 20px 0;
-  padding: 10px;
-  background-color: #1e1e1e; /* Dark background for sections */
-  border-radius: 5px;
-  animation: fadeIn 1s ease-in-out;
-}
 
 .skill-heading {
   color: #00a8ff; /* Blue color for headings */
   font-family: 'Courier New', monospace;
   font-size: 18px;
-  margin-bottom: 10px;
+  padding: 2px 2px;
+  margin: 2px;
 }
 
 .skill-list {
@@ -196,14 +247,18 @@ body {
 }
 
 .skill-list li {
-  margin: 10px 0;
-  padding: 5px 10px;
-  background-color: #2d2d2d; /* Darker background for list items */
+  margin: 2px 0;
+  padding: 5px 7px;
   border-radius: 5px;
   color: #00ff00; /* Green color */
   font-family: 'Courier New', monospace;
   font-size: 14px;
-  animation: fadeIn 1s ease-in-out;
+  background-color: #1b1b1b;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0 10px;
 }
 
 /* Framework Styling */
@@ -232,4 +287,36 @@ body {
   100% {
       background-position: 50% 100%;
   }
+}
+
+.help-container {
+  font-family: 'Courier New', monospace;
+  color: #ffffff;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.help-container h2 {
+  color: #00ff00;
+  margin-bottom: 10px;
+}
+
+.help-container p {
+
+  margin-bottom: 20px;
+}
+
+.commands-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.command-item {
+  padding: 10px;
+}
+
+.description {
+  font-size: 0.9em;
+  display: block;
+  margin-top: 5px;
 }

@@ -4,73 +4,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terminal Portfolio</title>
+  <title>TShell</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="{% static "frontend/css/style.css" %}">
+  <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'frontend/images/favicon.png' %}">
   <script src="https://unpkg.com/htmx.org"></script>
 </head>
 <body>
-  <div class="terminal">
-    <div class="header">
-      <div class="buttons">
-        <span class="button close"></span>
-        <span class="button minimize"></span>
-        <span class="button maximize"></span>
-      </div>
-      <div class="title">TawfiqSaid@portfolio: ~</div>
-    </div>
-    <div class="body" id="terminal-body">
-     
-
-      <div id="command-output">
-        <!-- New Line for Spacing -->
-        <br>
-      
-        <!-- ASCII Art for TSHELL -->
-        <pre class="ascii-art">
-████████╗███████╗██╗  ██╗███████╗██╗     ██╗     
-╚══██╔══╝██╔════╝██║  ██║██╔════╝██║     ██║     
-   ██║   ███████╗███████║█████╗  ██║     ██║     
-   ██║   ╚════██║██╔══██║██╔══╝  ██║     ██║     
-   ██║   ███████║██║  ██║███████╗███████╗███████╗
-  ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
-        </pre>
-      
-        <!-- Introduction Text -->
-        <p class="intro-text">
-          Hi, I'm <span class="highlight">Tawfiq Said</span>! 👋
-        </p>
-        <p class="intro-text">
-          I'm a <span class="highlight">Full Stack Developer</span> who loves turning ideas into reality through code. Whether it's building sleek websites or crafting powerful applications, I thrive on creating solutions that are both beautiful and functional.
-        </p>
-        <p class="intro-text">
-          Here's a snapshot of what I bring to the table:
-        </p>
-        <!-- Skills Section -->
-        <div class="skill-section">
-          <h3 class="skill-heading">Skills & Expertise</h3>
-          <ul class="skill-list">
-            <li><span class="command">Frontend</span>: HTML, CSS, JavaScript <span class="framework">(React, Bootstrap)</span></li>
-            <li><span class="command">Backend</span>: Python <span class="framework">(Django, FastAPI)</span>, PHP <span class="framework">(Laravel)</span>, Node.js</li>
-            <li><span class="command">Databases</span>: SQL <span class="framework">(MySQL, PostgreSQL)</span>, NoSQL <span class="framework">(MongoDB, Redis)</span></li>
-            <li><span class="command">DevOps</span>: Docker, Nginx, Apache, Git <span class="framework">(GitHub, GitLab)</span></li>
-            <li><span class="command">Cloud</span>: Azure, AWS</li>
-            <li><span class="command">Other</span>: RESTful APIs, TDD, Automation, Linux, Agile & Scrum</li>
-          </ul>
+  <canvas>
+  </canvas>
+              
+      <div class="terminal" id="terminal">
+        <div class="header">
+          <div class="buttons">
+            <a href="#" onclick="reloadPage()"><span class="button close"></span></a>
+            
+          </div>
+          <div class="title">Tawfiq@portfolio: ~</div>
         </div>
-      
-        <!-- Final Message -->
-        <p class="intro-text">
-          Welcome to my <span class="highlight">terminal-style portfolio</span>! Type <span class="command">help</span> to see available commands.
-        </p>
-      </div>
-      <div class="input-line">
-        <span class="user">TawfiqSaid@portfolio</span>:<span class="path">~</span>$ 
-        <input type="text" id="command-input" name="command" hx-get="{% url 'execute_command' %}" hx-trigger="keydown[key=='Enter']" hx-target="#command-output" hx-swap="beforeend" hx-vals="js:{command: document.getElementById('command-input').value}"   autofocus>
+        <div class="body" id="terminal-body">
+          
+          
+          <div id="command-output">
+            <!-- New Line for Spacing -->
+            <br>
+            
+            <!-- ASCII Art for TSHELL -->
+            <pre class="ascii-art">
+ ████████╗ ███████╗██╗  ██╗███████╗██╗     ██╗     
+ ╚══██╔══╝ ██╔════╝██║  ██║██╔════╝██║     ██║     
+    ██║    ███████╗███████║█████╗  ██║     ██║     
+    ██║    ╚════██║██╔══██║██╔══╝  ██║     ██║     
+    ██║    ███████║██║  ██║███████╗███████╗███████╗
+    ╚═╝    ╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
+          </pre>
+        
+          <!-- Final Message -->
+          <p class="intro-text">
+            Welcome to Tshell. Version 1.0
+          </p>
+          <p class="intro-text">
+            All rights reserved &copy; 2025
+          </p>
+          <p class="intro-text" style="animation-delay: .9s;">
+            Type <span class="command">about</span> to see basic information about me.
+          </p>
+          <p class="intro-text" style="animation-delay: 1.8s;">
+            Type <span class="command">help</span> to see available commands.
+          </p>
+        </div>
+        <div class="input-line">
+          <span class="user">Tawfiq@portfolio</span>:<span class="path">~</span>$ 
+          <input type="text" id="command-input" name="command" hx-get="{% url 'execute_command' %}" hx-trigger="keydown[key=='Enter']" hx-target="#command-output" hx-swap="beforeend" hx-vals="js:{command: document.getElementById('command-input').value}"   autofocus>
+        </div>
       </div>
     </div>
-  </div>
-  <script src="{% static "frontend/js/main.js" %}"></script>
+  <script src="{% static 'frontend/js/main.js' %}"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>
